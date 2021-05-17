@@ -65,8 +65,6 @@ class Track{
     }
 
     play(time_delta = 0.01){
-        // console.log("play");
-        // console.log(this);
 
         paint.brushNode.paintJS.brushColor="#000000"
         paint.brushNode.paintJS.brush.mousedown(this.current_point.transform());
@@ -82,7 +80,6 @@ class Track{
         paint.brushNode.paintJS.brush.mouseup();
 
         if(this.current_point.add(this.point[this.current_goal].mult(-1)).get_norm()<=dist_delta/2){
-            console.log("goal finish");
             this.audio.play();
             this.current_goal = (this.current_goal+1) % this.point.length;
         }
@@ -101,7 +98,7 @@ var track2 = new Track();
 var track3 = new Track();
 
 document.addEventListener("DOMContentLoaded", function(){
-    console.log("document ready");
+    paint.brushNode.paintJS.brushSize = 20;
     
     track1.add(new Vector(0,1));
     track1.add(new Vector(-1,1));
@@ -110,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function(){
     track1.add(new Vector(1,-1));
     track1.add(new Vector(0,-1));
     track1.setstart(new Vector(0,1));
-    track1.setbpm(160);
+    track1.setbpm(115);
     track1.setmp3("kick.wav");
     track1.draw();
 
@@ -124,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function(){
     track2.add(new Vector(0,2.5));
     track2.add(new Vector(0,1.5));
     track2.setstart(new Vector(-1.5,0.5));
-    track2.setbpm(160);
+    track2.setbpm(115);
     track2.setmp3("snare.wav");
     track2.draw();
 
@@ -137,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function(){
     track3.add(new Vector(3,0));
     track3.add(new Vector(4,0));
     track3.setstart(new Vector(4,1));
-    track3.setbpm(160);
+    track3.setbpm(115);
     track3.setmp3("hihat.wav");
     track3.draw();
 
