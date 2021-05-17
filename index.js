@@ -53,9 +53,9 @@ class Track{
         var goal_vec = this.point[this.current_goal].add(this.current_point.mult(-1));
         goal_vec = goal_vec.normalize();
         this.current_point = this.current_point.add(goal_vec.mult(dist_delta));
-        if(this.current_point.add(this.point[this.current_goal].mult(-1)).get_norm()<=0.02){
+        if(this.current_point.add(this.point[this.current_goal].mult(-1)).get_norm()<=dist_delta/2){
             console.log("goal finish");
-            //this.audio.play();
+            this.audio.play();
             this.current_goal = (this.current_goal+1) % this.point.length;
         }
     }
